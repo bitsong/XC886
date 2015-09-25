@@ -1,0 +1,264 @@
+C51 COMPILER V9.01   T01                                                                   09/15/2015 09:49:57 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE T01
+OBJECT MODULE PLACED IN T01.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE T01.C BROWSE MOD517(NOAU) DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          //****************************************************************************
+   2          // @Module        Timer 0/1
+   3          // @Filename      T01.C
+   4          // @Project       ssc.dav
+   5          //----------------------------------------------------------------------------
+   6          // @Controller    Infineon XC886CLM-8FF
+   7          //
+   8          // @Compiler      Keil
+   9          //
+  10          // @Codegenerator 1.3
+  11          //
+  12          // @Description:  This file contains functions that use the T01 module.
+  13          //
+  14          //----------------------------------------------------------------------------
+  15          // @Date          2015/9/2 12:35:12
+  16          //
+  17          //****************************************************************************
+  18          
+  19          // USER CODE BEGIN (T01_General,1)
+  20          
+  21          // USER CODE END
+  22          
+  23          
+  24          
+  25          //****************************************************************************
+  26          // @Project Includes
+  27          //****************************************************************************
+  28          
+  29          #include "MAIN.H"
+  30          
+  31          // USER CODE BEGIN (T01_General,2)
+  32          
+  33          // USER CODE END
+  34          
+  35          
+  36          //****************************************************************************
+  37          // @Macros
+  38          //****************************************************************************
+  39          
+  40          // USER CODE BEGIN (T01_General,3)
+  41          
+  42          // USER CODE END
+  43          
+  44          
+  45          //****************************************************************************
+  46          // @Defines
+  47          //****************************************************************************
+  48          
+  49          // USER CODE BEGIN (T01_General,4)
+  50          
+  51          // USER CODE END
+  52          
+  53          
+  54          //****************************************************************************
+  55          // @Typedefs
+C51 COMPILER V9.01   T01                                                                   09/15/2015 09:49:57 PAGE 2   
+
+  56          //****************************************************************************
+  57          
+  58          // USER CODE BEGIN (T01_General,5)
+  59          
+  60          // USER CODE END
+  61          
+  62          
+  63          //****************************************************************************
+  64          // @Imported Global Variables
+  65          //****************************************************************************
+  66          
+  67          // USER CODE BEGIN (T01_General,6)
+  68          
+  69          // USER CODE END
+  70          
+  71          
+  72          //****************************************************************************
+  73          // @Global Variables
+  74          //****************************************************************************
+  75          
+  76          // USER CODE BEGIN (T01_General,7)
+  77          
+  78          // USER CODE END
+  79          
+  80          
+  81          //****************************************************************************
+  82          // @External Prototypes
+  83          //****************************************************************************
+  84          
+  85          // USER CODE BEGIN (T01_General,8)
+  86          
+  87          // USER CODE END
+  88          
+  89          
+  90          //****************************************************************************
+  91          // @Prototypes Of Local Functions
+  92          //****************************************************************************
+  93          
+  94          // USER CODE BEGIN (T01_General,9)
+  95          
+  96          // USER CODE END
+  97          
+  98          
+  99          //****************************************************************************
+ 100          // @Function      void T01_vInit(void) 
+ 101          //
+ 102          //----------------------------------------------------------------------------
+ 103          // @Description   This is the initialization function of the Timer 0/1 
+ 104          //                function library. It is assumed that the SFRs used by this 
+ 105          //                library are in their reset state. 
+ 106          //                
+ 107          //                The following SFR fields will be initialized for both 
+ 108          //                timers 0 and 1:
+ 109          //                T0M            - Timer 0 mode
+ 110          //                T1M            - Timer 1 mode
+ 111          //                GATE0/GATE1    - gating control
+ 112          //                TLx, THx       - timer low/high registers
+ 113          //                ETx            - interrupt enable
+ 114          //                TRx            - timer run control (this is the final 
+ 115          //                action)
+ 116          //
+ 117          //----------------------------------------------------------------------------
+C51 COMPILER V9.01   T01                                                                   09/15/2015 09:49:57 PAGE 3   
+
+ 118          // @Returnvalue   None
+ 119          //
+ 120          //----------------------------------------------------------------------------
+ 121          // @Parameters    None
+ 122          //
+ 123          //----------------------------------------------------------------------------
+ 124          // @Date          2015/9/2
+ 125          //
+ 126          //****************************************************************************
+ 127          
+ 128          // USER CODE BEGIN (T01_Init,1)
+ 129          
+ 130          // USER CODE END
+ 131          
+ 132          void T01_vInit(void)
+ 133          {
+ 134   1        // USER CODE BEGIN (T01_Init,2)
+ 135   1      
+ 136   1        // USER CODE END
+ 137   1      
+ 138   1        ///  -----------------------------------------------------------------------
+ 139   1        ///  Timer 0
+ 140   1        ///  -----------------------------------------------------------------------
+ 141   1        ///  Mode 0: 8-bit timer (TH0) with a divide-by-32 prescaler (TL0)
+ 142   1        ///  the timer 0 overflow is 682.667 ?s
+ 143   1      
+ 144   1      
+ 145   1        ///  -----------------------------------------------------------------------
+ 146   1        ///  Timer 1
+ 147   1        ///  -----------------------------------------------------------------------
+ 148   1        ///  Mode 1: 16-bit timer (TH1, TL1)
+ 149   1        ///  the timer 1 overflow is 5461.333 ?s
+ 150   1      
+ 151   1      
+ 152   1        TMOD = 0x10;
+ 153   1      
+ 154   1        TL0 = 0x00;
+ 155   1        TH0 = 0x00;
+ 156   1      
+ 157   1        TL1 = 0x00;
+ 158   1        TH1 = 0x00;
+ 159   1      
+ 160   1        ///  Enable Timer 1 interrupt
+ 161   1        ET1 = 1;
+ 162   1      
+ 163   1        // USER CODE BEGIN (T01_Init,3)
+ 164   1      
+ 165   1        // USER CODE END
+ 166   1      
+ 167   1        ///  Start Timer 1
+ 168   1        TR1 = 1;
+ 169   1      } //  End of function T01_vInit
+ 170          
+ 171          
+ 172          //****************************************************************************
+ 173          // @Function      void T01_viTmr1(void) 
+ 174          //
+ 175          //----------------------------------------------------------------------------
+ 176          // @Description   This is the service routine for the timer 1 interrupt. It 
+ 177          //                is called 
+ 178          //                - when TH1 overflows if timer 1 is in mode 0 or 1 and timer 
+ 179          //                0 is not in mode 3
+C51 COMPILER V9.01   T01                                                                   09/15/2015 09:49:57 PAGE 4   
+
+ 180          //                - when TL1 overflows if timer 1 is in mode 2 and timer 0 is 
+ 181          //                not in mode 3
+ 182          //                - when TH0 overflows if timer 0 is in mode 3
+ 183          //                Please note that you have to add application specific code 
+ 184          //                to this function.
+ 185          //
+ 186          //----------------------------------------------------------------------------
+ 187          // @Returnvalue   none
+ 188          //
+ 189          //----------------------------------------------------------------------------
+ 190          // @Parameters    None
+ 191          //
+ 192          //----------------------------------------------------------------------------
+ 193          // @Date          2015/9/2
+ 194          //
+ 195          //****************************************************************************
+ 196          
+ 197          //   You have two choices for interrupt type select in Project Settings Page 
+ 198          //   under Global Settings Section.
+ 199          //   If you select CHOICE 1 then ISR will be generated with push and pop.
+ 200          //   If you select CHOICE 2 then ISR will be generated without push and pop.
+ 201          //   Default choice is CHOICE 2.
+ 202          //   Current selection is CHOICE 2 
+ 203          
+ 204          // USER CODE BEGIN (T01_IsrTmr1,1)
+ 205                  static  ubyte dat;
+ 206                  static msg_header send_t;
+ 207          // USER CODE END
+ 208          
+ 209          void T01_viTmr1(void) interrupt T1INT
+ 210          {
+ 211   1      
+ 212   1        // USER CODE BEGIN (T01_IsrTmr1,2)
+ 213   1        //the period is 5.223ms
+ 214   1                send_t.type=0x01;
+ 215   1                send_t.len=0x03;
+ 216   1                send(send_t);
+ 217   1                if(rcvbuf[0]==0xBB)
+ 218   1                      {
+ 219   2                          feeding_times=0;
+ 220   2                      }
+ 221   1              else
+ 222   1                      {
+ 223   2                              feeding_times++;        
+ 224   2                      }
+ 225   1        // USER CODE END
+ 226   1      
+ 227   1      } //  End of function T01_viTmr1
+ 228          
+ 229          
+ 230          // USER CODE BEGIN (T01_General,10)
+ 231          
+ 232          // USER CODE END
+ 233          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    142    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      3    ----
+C51 COMPILER V9.01   T01                                                                   09/15/2015 09:49:57 PAGE 5   
+
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

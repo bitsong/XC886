@@ -1,0 +1,10 @@
+"START_XC.obj",
+"MAIN.obj",
+"IO.obj",
+"SSC.obj",
+"T01.obj",
+"message.obj" 
+TO "ssc" 
+RAMSIZE(256) 
+CODE( 0X0000-0X5FFF,0XA000-0XBFFF )
+XDATA( 0XF000-0XF5FF )

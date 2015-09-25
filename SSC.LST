@@ -1,0 +1,383 @@
+C51 COMPILER V9.01   SSC                                                                   09/15/2015 09:49:57 PAGE 1   
+
+
+C51 COMPILER V9.01, COMPILATION OF MODULE SSC
+OBJECT MODULE PLACED IN SSC.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE SSC.C BROWSE MOD517(NOAU) DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          //****************************************************************************
+   2          // @Module        High Speed Synchronous Serial Interface(SSC)
+   3          // @Filename      SSC.C
+   4          // @Project       ssc.dav
+   5          //----------------------------------------------------------------------------
+   6          // @Controller    Infineon XC886CLM-8FF
+   7          //
+   8          // @Compiler      Keil
+   9          //
+  10          // @Codegenerator 1.3
+  11          //
+  12          // @Description:  This file contains functions that use the SSC module.
+  13          //
+  14          //----------------------------------------------------------------------------
+  15          // @Date          2015/9/2 12:35:12
+  16          //
+  17          //****************************************************************************
+  18          
+  19          // USER CODE BEGIN (SSC_General,1)
+  20          
+  21          // USER CODE END
+  22          
+  23          
+  24          
+  25          //****************************************************************************
+  26          // @Project Includes
+  27          //****************************************************************************
+  28          
+  29          #include "MAIN.H"
+  30          
+  31          // USER CODE BEGIN (SSC_General,2)
+  32          
+  33          // USER CODE END
+  34          
+  35          
+  36          //****************************************************************************
+  37          // @Macros
+  38          //****************************************************************************
+  39          
+  40          // USER CODE BEGIN (SSC_General,3)
+  41          
+  42          // USER CODE END
+  43          
+  44          
+  45          //****************************************************************************
+  46          // @Defines
+  47          //****************************************************************************
+  48          
+  49          // USER CODE BEGIN (SSC_General,4)
+  50          
+  51          // USER CODE END
+  52          
+  53          
+  54          //****************************************************************************
+  55          // @Typedefs
+C51 COMPILER V9.01   SSC                                                                   09/15/2015 09:49:57 PAGE 2   
+
+  56          //****************************************************************************
+  57          
+  58          // USER CODE BEGIN (SSC_General,5)
+  59          
+  60          // USER CODE END
+  61          
+  62          
+  63          //****************************************************************************
+  64          // @Imported Global Variables
+  65          //****************************************************************************
+  66          
+  67          // USER CODE BEGIN (SSC_General,6)
+  68          
+  69          // USER CODE END
+  70          
+  71          
+  72          //****************************************************************************
+  73          // @Global Variables
+  74          //****************************************************************************
+  75          
+  76          // USER CODE BEGIN (SSC_General,7)
+  77          
+  78          // USER CODE END
+  79          
+  80          
+  81          //****************************************************************************
+  82          // @External Prototypes
+  83          //****************************************************************************
+  84          
+  85          // USER CODE BEGIN (SSC_General,8)
+  86          
+  87          // USER CODE END
+  88          
+  89          
+  90          //****************************************************************************
+  91          // @Prototypes Of Local Functions
+  92          //****************************************************************************
+  93          
+  94          // USER CODE BEGIN (SSC_General,9)
+  95          
+  96          // USER CODE END
+  97          
+  98          
+  99          //****************************************************************************
+ 100          // @Function      void SSC_vInit(void) 
+ 101          //
+ 102          //----------------------------------------------------------------------------
+ 103          // @Description   This is the initialization function of the SSC function 
+ 104          //                library. It is assumed that the SFRs used by this library 
+ 105          //                are in their reset state. 
+ 106          //
+ 107          //----------------------------------------------------------------------------
+ 108          // @Returnvalue   None
+ 109          //
+ 110          //----------------------------------------------------------------------------
+ 111          // @Parameters    None
+ 112          //
+ 113          //----------------------------------------------------------------------------
+ 114          // @Date          2015/9/2
+ 115          //
+ 116          //****************************************************************************
+ 117          
+C51 COMPILER V9.01   SSC                                                                   09/15/2015 09:49:57 PAGE 3   
+
+ 118          // USER CODE BEGIN (Init,1)
+ 119          
+ 120          // USER CODE END
+ 121          
+ 122          void SSC_vInit(void)
+ 123          {
+ 124   1        // USER CODE BEGIN (Init,2)
+ 125   1      
+ 126   1        // USER CODE END
+ 127   1      
+ 128   1        ///  - Port Selection
+ 129   1        SSC_PISEL     =  0x00;         // load SSC Port Input Select Register to 
+ 130   1                                       // Port A
+ 131   1      
+ 132   1        ///  -----------------------------------------------------------------------
+ 133   1        ///  Configuration of the used SSC Port Pins:
+ 134   1        ///  -----------------------------------------------------------------------
+ 135   1        ///  Pin SCLK (P0.3) is Not selected for SCLK ouput 
+ 136   1        ///  Pin MTSR_1 (P0.4) is Not selected for Master Transmit Output 
+ 137   1        ///  Pin MRST_1 (P0.5) Not is selected for Master Receive Input 
+ 138   1      
+ 139   1        ///  Pin SCLK (P1.2) is selected for SCLK ouput 
+ 140   1        ///  Pin MTSR_0 (P1.3) is selected for Master Transmit Output 
+ 141   1        ///  Pin MRST_0 (P1.4) is selected for Master Receive Input 
+ 142   1      
+ 143   1        SFR_PAGE(_pp2, noSST);         // switch to page 2 without saving
+ 144   1        P1_ALTSEL0      |= 0x0C;              //  set AltSel0 
+ 145   1        P1_ALTSEL1      &= ~(ubyte)0x0C;      //  set AltSel1
+ 146   1      
+ 147   1        SFR_PAGE(_pp0, noSST);         // switch to page 0 without saving
+ 148   1        P1_DIR          |= 0x0C;      //  set OutPut Direction
+ 149   1      
+ 150   1      
+ 151   1        SSC_CONH_P &= ~(ubyte)0x80;           //  enable access to control bits
+ 152   1      
+ 153   1        ///  -----------------------------------------------------------------------
+ 154   1        ///  Configuration of the SSC Baud Rate Generator:
+ 155   1        ///  -----------------------------------------------------------------------
+ 156   1        ///  - required baud rate = 100.000 kbaud
+ 157   1        ///  - real baud rate     = 100.000 kbaud
+ 158   1        ///  - deviation          = 0.000 %
+ 159   1      
+ 160   1        SSC_BRH       =  0x00;         // load SSC baud rate time reload register 
+ 161   1                                       // high
+ 162   1        SSC_BRL       =  0x01;         // load SSC baud rate time reload register 
+ 163   1                                       // low
+ 164   1      
+ 165   1        ///  -----------------------------------------------------------------------
+ 166   1        ///  Configuration of the SSC Operation Mode:
+ 167   1        ///  -----------------------------------------------------------------------
+ 168   1        ///  - this device is configured as SSC master
+ 169   1        ///  - transfer data width is 8 bit
+ 170   1        ///  - transfer/receive MSB first
+ 171   1        ///  - shift transmit data on the leading clock edge, latch on trailing edge
+ 172   1        ///  - idle clock line is low, leading clock edge is low-to-high transition
+ 173   1        ///  - ignore receive error
+ 174   1        ///  - ignore phase error
+ 175   1      
+ 176   1      
+ 177   1        SSC_CONH_P    =  0x40;         // load SSC control register
+ 178   1      
+ 179   1        SSC_CONL_P    =  0x17;         // load SSC control register
+C51 COMPILER V9.01   SSC                                                                   09/15/2015 09:49:57 PAGE 4   
+
+ 180   1      
+ 181   1        SSC_CONH_P |= 0x80;           //  disable access to control bits
+ 182   1      
+ 183   1        ///  - SSC interrupt is disabled
+ 184   1      
+ 185   1        // USER CODE BEGIN (Init,3)
+ 186   1                                         P1_DATA &=~0x20;
+ 187   1        // USER CODE END
+ 188   1      
+ 189   1      } //  End of function SSC_vInit
+ 190          
+ 191          
+ 192          //****************************************************************************
+ 193          // @Function      void SSC_vSendData(ubyte Data) 
+ 194          //
+ 195          //----------------------------------------------------------------------------
+ 196          // @Description   The master device can initiate the first data transfer by 
+ 197          //                writing the transmit data into transmit buffer. This value 
+ 198          //                is copied into the shift register (which is assumed to be 
+ 199          //                empty at this time), and the selected first bit of the 
+ 200          //                transmit data is placed onto the MTSR line on the next 
+ 201          //                clock from the baud rate generator. 
+ 202          //                A slave device immediately outputs the selected first bit 
+ 203          //                (MSB or LSB of the transfer data) at pin MRST, when the 
+ 204          //                contents of the transmit buffer are copied into the slave's 
+ 205          //                shift register. 
+ 206          //
+ 207          //----------------------------------------------------------------------------
+ 208          // @Returnvalue   None
+ 209          //
+ 210          //----------------------------------------------------------------------------
+ 211          // @Parameters    Data: 
+ 212          //                Data to be send
+ 213          //
+ 214          //----------------------------------------------------------------------------
+ 215          // @Date          2015/9/2
+ 216          //
+ 217          //****************************************************************************
+ 218          
+ 219          // USER CODE BEGIN (SendData,1)
+ 220          
+ 221          // USER CODE END
+ 222          
+ 223          void SSC_vSendData(ubyte Data)
+ 224          {
+ 225   1        SSC_TBL  = Data;   //  load transmit buffer register
+ 226   1      
+ 227   1      } //  End of function SSC_vSendData
+ 228          
+ 229          
+ 230          //****************************************************************************
+ 231          // @Function      ubyte SSC_vGetData(void) 
+ 232          //
+ 233          //----------------------------------------------------------------------------
+ 234          // @Description   This function returns the contents of the receive buffer. 
+ 235          //                When the receive interrupt request flag is set this implies 
+ 236          //                that data is available for reading in the receive buffer. 
+ 237          //
+ 238          //----------------------------------------------------------------------------
+ 239          // @Returnvalue   Received data
+ 240          //
+ 241          //----------------------------------------------------------------------------
+C51 COMPILER V9.01   SSC                                                                   09/15/2015 09:49:57 PAGE 5   
+
+ 242          // @Parameters    None
+ 243          //
+ 244          //----------------------------------------------------------------------------
+ 245          // @Date          2015/9/2
+ 246          //
+ 247          //****************************************************************************
+ 248          
+ 249          // USER CODE BEGIN (GetData,1)
+ 250          
+ 251          // USER CODE END
+ 252          
+ 253          ubyte SSC_vGetData(void)
+ 254          {
+ 255   1        return(SSC_RBL);     // return receive buffer register
+ 256   1      
+ 257   1      } //  End of function SSC_vGetData
+ 258          
+ 259          
+ 260          //****************************************************************************
+ 261          // @Function      ubyte SSC_ubError(void) 
+ 262          //
+ 263          //----------------------------------------------------------------------------
+ 264          // @Description   This function checks if an error occured. With the help of 
+ 265          //                error flags it is possible to establish the cause of 
+ 266          //                errors. 
+ 267          //                The possible values for the retuned error are: 
+ 268          //                Bit 0 = 1   ->  Transmit error 
+ 269          //                Bit 1 = 1   ->  receive error 
+ 270          //                Bit 2 = 1   ->  phase error (only in slave mode) 
+ 271          //                Bit 3 = 1   ->  baud rate error (only in slave mode) 
+ 272          //
+ 273          //----------------------------------------------------------------------------
+ 274          // @Returnvalue   Returns the error code
+ 275          //
+ 276          //----------------------------------------------------------------------------
+ 277          // @Parameters    None
+ 278          //
+ 279          //----------------------------------------------------------------------------
+ 280          // @Date          2015/9/2
+ 281          //
+ 282          //****************************************************************************
+ 283          
+ 284          // USER CODE BEGIN (Error,1)
+ 285          
+ 286          // USER CODE END
+ 287          
+ 288          ubyte SSC_ubError(void)
+ 289          {
+ 290   1        ubyte ubReturn;
+ 291   1      
+ 292   1        ubReturn = 0;
+ 293   1      
+ 294   1        SFR_PAGE(_su0, SST1);          // switch to page 0
+ 295   1      
+ 296   1        if (IRCON1 & 0x01)  //  if error
+ 297   1        {
+ 298   2          IRCON1  &= ~(ubyte)0x01;
+ 299   2      
+ 300   2          SSC_CONH_P |= 0x80;           //  disable access to control bits
+ 301   2      
+ 302   2          if (SSC_CONH_O & 0x01)  //  if transmit error
+ 303   2          {
+C51 COMPILER V9.01   SSC                                                                   09/15/2015 09:49:57 PAGE 6   
+
+ 304   3      
+ 305   3            SSC_CONH_O  &= ~(ubyte)0x01;
+ 306   3      
+ 307   3            ubReturn |= 0x01;
+ 308   3      
+ 309   3          }
+ 310   2      
+ 311   2          if (SSC_CONH_O & 0x02)  //  if receive error
+ 312   2          {
+ 313   3      
+ 314   3            SSC_CONH_O  &= ~(ubyte)0x02;
+ 315   3      
+ 316   3            ubReturn |= 0x02;
+ 317   3      
+ 318   3          }
+ 319   2      
+ 320   2          if (SSC_CONH_O & 0x04)  //  if phase error
+ 321   2          {
+ 322   3      
+ 323   3            SSC_CONH_O  &= ~(ubyte)0x04;
+ 324   3      
+ 325   3            ubReturn |= 0x04;
+ 326   3      
+ 327   3          }
+ 328   2      
+ 329   2          if (SSC_CONH_O & 0x08)  //  if baud rate error
+ 330   2          {
+ 331   3      
+ 332   3            SSC_CONH_O  &= ~(ubyte)0x08;
+ 333   3      
+ 334   3            ubReturn |= 0x08;
+ 335   3      
+ 336   3          }
+ 337   2      
+ 338   2        }
+ 339   1      
+ 340   1        SFR_PAGE(_su0, RST1);          // restore the old SCU page
+ 341   1      
+ 342   1        return(ubReturn);
+ 343   1      
+ 344   1      } //  End of function SSC_ubError
+ 345          
+ 346          
+ 347          // USER CODE BEGIN (SSC_General,10)
+ 348          
+ 349          // USER CODE END
+ 350          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    106    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

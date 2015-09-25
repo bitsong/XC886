@@ -1,0 +1,35 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+Z:\share2\simpledog\886_0907\ssc.uvproj
+Project File Date:  09/14/2015
+
+<h2>Output:</h2>
+Load "Z:\\share2\\simpledog\\886_0907\\ssc" 
+Searching for DAS Server 'UDAS'...
+DAS Server 'UDAS' is installed.
+DAS Server 'UDAS' is not started yet. Trying to start it now...
+DAS Server 'UDAS' has been started successfully.
+Warning: Unknown JTAG ID=00000000. Assuming an XC866-4FR device with 16K flash
+Load "Z:\\share2\\simpledog\\886_0907\\ssc" 
+Searching for DAS Server 'UDAS'...
+DAS Server 'UDAS' is installed.
+DAS Server 'UDAS' is not started yet. Trying to start it now...
+DAS Server 'UDAS' has been started successfully.
+Erasing Bank 0  Sectors: 0
+Erase Done.
+Programming Done.
+Verify Done.
+Application running ...
+Load "Z:\\share2\\simpledog\\886_0907\\ssc" 
+Searching for DAS Server 'UDAS'...
+DAS Server 'UDAS' is installed.
+DAS Server 'UDAS' is not started yet. Trying to start it now...
+DAS Server 'UDAS' has been started successfully.
+Erasing Bank 0  Sectors: 0
+Erase Done.
+Programming Done.
+Verify Done.
+Application running ...

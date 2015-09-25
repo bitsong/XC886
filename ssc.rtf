@@ -1,0 +1,617 @@
+{\rtf1\ansi\deff0\deftab720{\fonttbl{\f0\fnil MS Sans Serif;}{\f1\fnil\fcharset2 Symbol;}{\f2\fswiss\fprq2 System;}{\f3\fnil Times New Roman;}{\f4\fswiss\fprq2 Arial;}}
+{\colortbl\red0\green0\blue0;\red0\green0\blue128;\red255\green0\blue0;}
+\deflang1031\pard\plain\f4\fs28\cf0 DAvE's Project Documentation
+\par \plain\f4\fs22\cf0
+\par \plain\f4\fs22\cf0 Project: \tab\tab\b ssc.dav
+\par 
+\par \plain\f4\fs22\cf0 Controller: \tab\tab\b XC886CLM-8FF
+\par \plain\f4\fs22\cf0 Compiler: \tab\tab\b Keil
+\par \plain\f4\fs22\cf0 Memory Model: \tab\b SMALL
+\par 
+\par \plain\f4\fs22\cf0 Date: \tab\tab\tab\b 2015/9/2 12:35:12
+\par 
+\par 
+\par \plain\f4\fs22\cf2\b Please read this document carefully and note
+\par \plain\f4\fs22\cf2\b the red-colored hints.
+\par 
+\par \plain\f4\fs22\cf2\b If you miss a file in the generated files list
+\par \plain\f4\fs22\cf2\b maybe you have forgotten to select the
+\par \plain\f4\fs22\cf2\b initialisation function of the related module.
+\par 
+\par \plain\f4\fs22\cf0 Generated Files:
+\plain\f4\fs20\cf0\b
+\par \tab\tab\tab MAIN.H
+\par \tab\tab\tab MAIN.C
+\par \tab\tab\tab START_XC.A51
+\par \tab\tab\tab IO.H
+\par \tab\tab\tab IO.C
+\par \tab\tab\tab T01.H
+\par \tab\tab\tab T01.C
+\par \tab\tab\tab SSC.H
+\par \tab\tab\tab SSC.C
+\par \tab\tab\tab SSC.ASM
+\par 
+\par 
+\par \plain\f4\fs20\cf0
+\par \plain\f4\fs28\cf0\ul Project Settings
+\par
+\par \plain\f4\fs24\cf0 Macros:\f4\fs20\cf0
+\par \plain\f4\fs24\cf0 Functions:\f4\fs20\cf0
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void MAIN_vInit(void)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This function initializes the microcontroller. It is
+
+\par \tab \tab assumed that the SFRs are in their reset state.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void main(void)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This is the main function.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par \plain\f4\fs24\cf0 Initialization:
+\par \plain\f4\fs20\cf0\b
+\par
+\tab Configuration of the System Clock:\par 
+\tab - On Chip Osc is Selected\par 
+\tab - PLL Mode, NDIV =  20\par 
+\tab - input frequency is 9.6 MHz\par 
+\par 
+\tab *********************************************************************************\par 
+\tab Note : All peripheral related IO configurations are done in the\par 
+\tab respective peripheral modules (alternate functions selection)\par 
+\tab *********************************************************************************\par 
+\par 
+\tab Initialization of module 'GPIO'\par 
+\par 
+\tab Initialization of module 'Timer 0/1'\par 
+\par 
+\tab Initialization of module 'High Speed Synchronous Serial Interface(SSC)'\par 
+\par 
+\tab \cf2Interrupt structure 2 mode 0 is selected.\cf0\par 
+\par 
+\tab \cf2Interrupt service routine choice 2 is selected.\cf0\par 
+\par 
+
+\par \plain\f4\fs20\cf0
+\par \plain\f4\fs28\cf0\ul GPIO
+\par
+\par \plain\f4\fs24\cf0 Macros:\f4\fs20\cf0
+\par
+\par
+\par \plain\f4\fs20\cf0 \tab Macro:
+\par \plain\f4\fs20\cf0\b \tab \tab IO_ubReadPin(PinName)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This macro returns the status of the chosen portpin.
+
+\par \tab \tab Note:
+
+\par \tab \tab 'PinName' identifies the pin of a bit-addressable port. The
+
+\par \tab \tab default names can be changed in the port configuration
+
+\par \tab \tab dialog.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b Status of the chosen portpin\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab PinName:
+
+\par \tab \tab Pin to be read
+
+\par
+\par
+\par \plain\f4\fs20\cf0 \tab Macro:
+\par \plain\f4\fs20\cf0\b \tab \tab IO_vSetPin(PinName)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab The chosen portpin is set to '1'.
+
+\par \tab \tab Note:
+
+\par \tab \tab 'PinName' identifies the pin of a bit-addressable port. The
+
+\par \tab \tab default names can be changed in the port configuration
+
+\par \tab \tab dialog.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab PinName:
+
+\par \tab \tab Pin to be set to '1'
+
+\par
+\par
+\par \plain\f4\fs20\cf0 \tab Macro:
+\par \plain\f4\fs20\cf0\b \tab \tab IO_vResetPin(PinName)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab The chosen portpin is set to '0'.
+
+\par \tab \tab Note:
+
+\par \tab \tab 'PinName' identifies the pin of a bit-addressable port. The
+
+\par \tab \tab default names can be changed in the port configuration
+
+\par \tab \tab dialog.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab PinName:
+
+\par \tab \tab Pin to be set to '0'
+
+\par
+\par
+\par \plain\f4\fs20\cf0 \tab Macro:
+\par \plain\f4\fs20\cf0\b \tab \tab IO_vTogglePin(PinName)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab The chosen portpin will be toggled.
+
+\par \tab \tab Note:
+
+\par \tab \tab 'PinName' identifies the pin of a bit-addressable port. The
+
+\par \tab \tab default names can be changed in the port configuration
+
+\par \tab \tab dialog.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab PinName:
+
+\par \tab \tab Pin to be toggled
+
+\par
+\par
+\par \plain\f4\fs20\cf0 \tab Macro:
+\par \plain\f4\fs20\cf0\b \tab \tab IO_vSetInput(PortName, Mask)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This macro changes the direction of I/O port pins to input.
+
+\par \tab \tab Parameter 'PortName' selects the port and parameter 'Mask'
+
+\par \tab \tab selects the lines of this port.
+
+\par \tab \tab Example: IO_vSetInput(P1, 0x11) sets P1.0 and P1.4 to input.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab PortName:
+
+\par \tab \tab Port to be configured
+
+\par \tab \tab Mask:
+
+\par \tab \tab Mask for port pins to be configured
+
+\par
+\par
+\par \plain\f4\fs20\cf0 \tab Macro:
+\par \plain\f4\fs20\cf0\b \tab \tab IO_vSetOutput(PortName, Mask)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This macro changes the direction of I/O port pins to
+
+\par \tab \tab output. Parameter 'PortName' selects the port and parameter
+
+\par \tab \tab 'Mask' selects the lines of this port.
+
+\par \tab \tab Example: IO_vSetOutput(P1, 0x11) sets P1.0 and P1.4 to
+
+\par \tab \tab output.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab PortName:
+
+\par \tab \tab Port to be configured
+
+\par \tab \tab Mask:
+
+\par \tab \tab Mask for port pins to be configured
+
+\par \plain\f4\fs24\cf0 Functions:\f4\fs20\cf0
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void IO_vInit(void)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This is the initialization function of the IO function
+
+\par \tab \tab library. It is assumed that the SFRs used by this library
+
+\par \tab \tab are in their reset state.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par \plain\f4\fs24\cf0 Initialization:
+\par \plain\f4\fs20\cf0\b
+\par
+\tab ***********************************************************************\par 
+\tab Note : All peripheral related IO configurations are done in the\par 
+\tab respective peripheral modules (alternate functions selection)\par 
+\tab \par 
+\tab If no pins are selected DAvE assumes that registers are in default\par 
+\tab settings\par 
+\tab ***********************************************************************\par 
+\par 
+\tab Configuration of Port P0:\par 
+\tab - no pin of port P0 is used\par 
+\par 
+\tab Configuration of Port P1:\par 
+\tab P1.2:\par 
+\tab - is used as alternate output for the SSC Clock Output\par 
+\tab - push/pull output is selected\par 
+\tab - pull-up device is assigned\par 
+\tab P1.3:\par 
+\tab - is used as alternate output for the SSC Master Transmit Output\par 
+\tab - push/pull output is selected\par 
+\tab - pull-up device is assigned\par 
+\tab P1.4:\par 
+\tab - is used as alternate input for the SSC Master Receive Input\par 
+\tab - pull-up device is assigned\par 
+\tab P1.5:\par 
+\tab - is used as general purpose output\par 
+\tab - push/pull output is selected\par 
+\tab - the pin status is low level\par 
+\tab - pull-up device is assigned\par 
+\par 
+\tab Configuration of Port P2:\par 
+\tab - no pin of port P2 is used\par 
+\par 
+\tab Configuration of Port P3:\par 
+\tab - no pin of port P3 is used\par 
+\par 
+\tab Configuration of Port P4:\par 
+\tab P4.3:\par 
+\tab - is used as general purpose output\par 
+\tab - push/pull output is selected\par 
+\tab - the pin status is low level\par 
+\tab - pull device is disabled (tristate)\par 
+\par 
+
+\par \plain\f4\fs20\cf0
+\par \plain\f4\fs28\cf0\ul Timer 0/1
+\par
+\par \plain\f4\fs24\cf0 Macros:\f4\fs20\cf0
+\par \plain\f4\fs24\cf0 Functions:\f4\fs20\cf0
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void T01_vInit(void)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This is the initialization function of the Timer 0/1
+
+\par \tab \tab function library. It is assumed that the SFRs used by this
+
+\par \tab \tab library are in their reset state.
+
+\par \tab \tab The following SFR fields will be initialized for both
+
+\par \tab \tab timers 0 and 1:
+
+\par \tab \tab T0M            - Timer 0 mode
+
+\par \tab \tab T1M            - Timer 1 mode
+
+\par \tab \tab GATE0/GATE1    - gating control
+
+\par \tab \tab TLx, THx       - timer low/high registers
+
+\par \tab \tab ETx            - interrupt enable
+
+\par \tab \tab TRx            - timer run control (this is the final
+
+\par \tab \tab action)
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void T01_viTmr1(void)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This is the service routine for the timer 1 interrupt. It
+
+\par \tab \tab is called
+
+\par \tab \tab - when TH1 overflows if timer 1 is in mode 0 or 1 and timer
+
+\par \tab \tab 0 is not in mode 3
+
+\par \tab \tab - when TL1 overflows if timer 1 is in mode 2 and timer 0 is
+
+\par \tab \tab not in mode 3
+
+\par \tab \tab - when TH0 overflows if timer 0 is in mode 3
+
+\par \tab \tab Please note that you have to add application specific code
+
+\par \tab \tab to this function.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b none\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par \plain\f4\fs24\cf0 Initialization:
+\par \plain\f4\fs20\cf0\b
+\par
+\tab Timer 0\par 
+\tab Mode 0: 8-bit timer (TH0) with a divide-by-32 prescaler (TL0)\par 
+\tab the timer 0 overflow is 682.667 ?s\par 
+\par 
+\tab Timer 1\par 
+\tab Mode 1: 16-bit timer (TH1, TL1)\par 
+\tab the timer 1 overflow is 5461.333 ?s\par 
+\par 
+\tab Enable Timer 1 interrupt\par 
+\par 
+\tab Start Timer 1\par 
+\par 
+
+\par \plain\f4\fs20\cf0
+\par \plain\f4\fs28\cf0\ul High Speed Synchronous Serial Interface(SSC)
+\par
+\par \plain\f4\fs24\cf0 Macros:\f4\fs20\cf0
+\par
+\par
+\par \plain\f4\fs20\cf0 \tab Macro:
+\par \plain\f4\fs20\cf0\b \tab \tab SSC_ubProgrammingMode()\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This macro sets the Programming Mode.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par
+\par \plain\f4\fs20\cf0 \tab Macro:
+\par \plain\f4\fs20\cf0\b \tab \tab SSC_ubOperatingMode()\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This macro sets the OperatingMode.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par
+\par \plain\f4\fs20\cf0 \tab Macro:
+\par \plain\f4\fs20\cf0\b \tab \tab SSC_ubBusy()\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This macro may be used for checking the status of the busy
+
+\par \tab \tab flag. When a transfer starts, the busy flag is set. At the
+
+\par \tab \tab end of a transfer (SSC_TB is empty) the busy flag is
+
+\par \tab \tab cleared.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b Returns a 1 if SSC is busy, else 0\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par
+\par \plain\f4\fs20\cf0 \tab Macro:
+\par \plain\f4\fs20\cf0\b \tab \tab SSC_ubSetLoopBackMode()\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This macro sets the loop back mode of SSC. In this mode the
+
+\par \tab \tab receive input is connected with transmit output
+
+\par \tab \tab (half-duplex mode). To be reset this mode call the macro
+
+\par \tab \tab SSC_ubResetLoopBackMode.NOTE: To set LoopBack mode user has
+
+\par \tab \tab to switch to operating mode.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par
+\par \plain\f4\fs20\cf0 \tab Macro:
+\par \plain\f4\fs20\cf0\b \tab \tab SSC_ubResetLoopBackMode()\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This macro resets the loop back mode of SSC. To be set the
+
+\par \tab \tab loop back mode call the macro SSC_ubSetLoopBackMode.NOTE:
+
+\par \tab \tab To reset LoopBack mode user has to switch to operating mode.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par \plain\f4\fs24\cf0 Functions:\f4\fs20\cf0
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void SSC_vInit(void)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This is the initialization function of the SSC function
+
+\par \tab \tab library. It is assumed that the SFRs used by this library
+
+\par \tab \tab are in their reset state.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab void SSC_vSendData(ubyte Data)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab The master device can initiate the first data transfer by
+
+\par \tab \tab writing the transmit data into transmit buffer. This value
+
+\par \tab \tab is copied into the shift register (which is assumed to be
+
+\par \tab \tab empty at this time), and the selected first bit of the
+
+\par \tab \tab transmit data is placed onto the MTSR line on the next
+
+\par \tab \tab clock from the baud rate generator.
+
+\par \tab \tab A slave device immediately outputs the selected first bit
+
+\par \tab \tab (MSB or LSB of the transfer data) at pin MRST, when the
+
+\par \tab \tab contents of the transmit buffer are copied into the slave's
+
+\par \tab \tab shift register.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b None\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab Data:
+
+\par \tab \tab Data to be send
+
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab ubyte SSC_vGetData(void)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This function returns the contents of the receive buffer.
+
+\par \tab \tab When the receive interrupt request flag is set this implies
+
+\par \tab \tab that data is available for reading in the receive buffer.
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b Received data\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par \plain\f4\fs20\cf0 \tab Function:
+\par \plain\f4\fs20\cf0\b \tab \tab ubyte SSC_ubError(void)\plain\f4\fs20\cf0
+\par \tab Description:
+\par \plain\f4\fs20\cf0\i
+\tab \tab This function checks if an error occured. With the help of
+
+\par \tab \tab error flags it is possible to establish the cause of
+
+\par \tab \tab errors.
+
+\par \tab \tab The possible values for the retuned error are:
+
+\par \tab \tab Bit 0 = 1   ->  Transmit error
+
+\par \tab \tab Bit 1 = 1   ->  receive error
+
+\par \tab \tab Bit 2 = 1   ->  phase error (only in slave mode)
+
+\par \tab \tab Bit 3 = 1   ->  baud rate error (only in slave mode)
+
+\par \plain\f4\fs20\cf0 \tab Returnvalue:
+\par \tab \tab \plain\f4\fs20\cf0\b Returns the error code\plain\f4\fs20\cf0
+\par \plain\f4\fs20\cf0 \tab Parameters:
+\par \plain\f4\fs20\cf0\b 
+\tab \tab None
+
+\par
+\par \plain\f4\fs24\cf0 Initialization:
+\par \plain\f4\fs20\cf0\b
+\par
+\tab - Port Selection\par 
+\par 
+\tab Configuration of the used SSC Port Pins:\par 
+\tab Pin SCLK (P0.3) is Not selected for SCLK ouput\par 
+\tab Pin MTSR_1 (P0.4) is Not selected for Master Transmit Output\par 
+\tab Pin MRST_1 (P0.5) Not is selected for Master Receive Input\par 
+\par 
+\tab Pin SCLK (P1.2) is selected for SCLK ouput\par 
+\tab Pin MTSR_0 (P1.3) is selected for Master Transmit Output\par 
+\tab Pin MRST_0 (P1.4) is selected for Master Receive Input\par 
+\par 
+\tab Configuration of the SSC Baud Rate Generator:\par 
+\tab - required baud rate = 100.000 kbaud\par 
+\tab - real baud rate     = 100.000 kbaud\par 
+\tab - deviation          = 0.000 %\par 
+\par 
+\tab Configuration of the SSC Operation Mode:\par 
+\tab - this device is configured as SSC master\par 
+\tab - transfer data width is 8 bit\par 
+\tab - transfer/receive MSB first\par 
+\tab - shift transmit data on the leading clock edge, latch on trailing edge\par 
+\tab - idle clock line is low, leading clock edge is low-to-high transition\par 
+\tab - ignore receive error\par 
+\tab - ignore phase error\par 
+\par 
+\tab - SSC interrupt is disabled\par 
+\par 
+
+}
